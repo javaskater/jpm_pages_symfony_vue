@@ -1,4 +1,12 @@
-# Symfony Docker
+# My personal pages using 
+* [VueJS](https://vuejs.org/) for the FrontEnd
+* [Symfony](https://symfony.com/) for the PHP Backend
+* I am running my DEV Environment on a Windows Laptop
+  * using Symfony Docker (see below)
+  * on [Windows Subsystem for Linux (WSL2)](https://learn.microsoft.com/en-us/windows/wsl/install) Running Ubuntu 24.04
+  * and [Docker4Windows](https://docs.docker.com/desktop/setup/install/windows-install/) running on WSL/Ubuntu as base 
+* All the Windows/WSL/Docker/SymfonyDoker installation is documented on [technical Reviewving on my Gitlab repository](https://gitlab.com/jpmena/technical_reviewing/-/tree/main/PersonalProjects/PersonalPortal3/DOCKER?ref_type=heads)
+## Symfony Docker
 
 A [Docker](https://www.docker.com/)-based installer and runtime for the [Symfony](https://symfony.com) web framework,
 with [FrankenPHP](https://frankenphp.dev) and [Caddy](https://caddyserver.com/) inside!

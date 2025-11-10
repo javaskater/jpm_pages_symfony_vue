@@ -29,6 +29,9 @@ class JpmDiplom
     #[ORM\Column(length: 1000, nullable: true)]
     private ?string $cursusDescription = null;
 
+    #[ORM\Column(length: 10)]
+    private ?string $language = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +93,18 @@ class JpmDiplom
     public function setCursusDescription(?string $cursusDescription): static
     {
         $this->cursusDescription = $cursusDescription;
+
+        return $this;
+    }
+
+    public function getLanguage(): ?string
+    {
+        return $this->language;
+    }
+
+    public function setLanguage(string $language): static
+    {
+        $this->language = $language;
 
         return $this;
     }
