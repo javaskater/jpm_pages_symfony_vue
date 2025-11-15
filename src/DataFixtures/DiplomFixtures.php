@@ -19,7 +19,7 @@ class DiplomFixtures extends Fixture
         
         $diplom = new JpmDiplom();
         $diplom->setSchoolName("Ecole Centrale de Lille");
-        $diplom->setUrl("'https://centralelille.fr/");
+        $diplom->setUrl("https://centralelille.fr/");
         $diplom->setBeginDate(DateTime::createFromFormat($format, $begin_date_str));
         $diplom->setEndDate(DateTime::createFromFormat($format, $end_date_str));
         $diplom->setLanguage('fr_FR');
