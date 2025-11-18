@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\JpmDiplom;
+use App\Repository\JpmDiplomRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -16,7 +17,7 @@ use Psr\Log\LoggerInterface;
 
 use DateTime;
 
-class JPMController extends AbstractController
+class DiplomController extends AbstractController
 {
 
     
@@ -65,6 +66,24 @@ class JPMController extends AbstractController
         }
 
         $jsonContent = $serializer->serialize($diplom, 'json');
+
+        return JsonResponse::fromJsonString($jsonContent);
+    }
+
+    #[Route('/diploms/{lang}', name: 'diploms_by_lang')]
+    public function getDiplomForLang(SerializerInterface $serializer, JpmDiplomRepository $repo, string $lang): Response
+    {
+        $this->phpLogger->debug("[diplom Controller] Calling all the diploms for the specific language:".$lang);
+        
+        $diploms =  $repo->findAllDiplomforALanguage($lang);
+
+        if (!$diploms) {
+            throw $this->createNotFoundException(
+                'No diplom found for language '.$lang
+            );
+        }
+
+        $jsonContent = $serializer->serialize($diploms, 'json');
 
         return JsonResponse::fromJsonString($jsonContent);
     }

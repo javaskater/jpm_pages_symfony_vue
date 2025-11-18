@@ -15,7 +15,14 @@ class JpmDiplomRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, JpmDiplom::class);
     }
-
+    /**
+     * @return JpmDiplom[] Returns an array of JpmDiplom objects
+     */
+    public function findAllDiplomforALanguage(string $language):array {
+        $queryBuilder = $this->createQueryBuilder('jpmd');
+        $diplomsQuery = $queryBuilder->select('jpmd')->where('jpmd.language = :lang')->setParameter('lang',$language);
+        return $diplomsQuery->getQuery()->getResult();
+    }
     //    /**
     //     * @return JpmDiplom[] Returns an array of JpmDiplom objects
     //     */
