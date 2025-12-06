@@ -85,6 +85,12 @@ class DiplomController extends AbstractController
 
         $jsonContent = $serializer->serialize($diploms, 'json');
 
-        return JsonResponse::fromJsonString($jsonContent);
+        $jsonResponse = new Response($jsonContent, 200, [
+                'Access-Control-Allow-Origin' => '*',
+                'Access-Control-Allow-Methods' => 'GET',
+                'Content-Type' => 'application/json',
+        ]);
+
+        return $jsonResponse;
     }
 }
